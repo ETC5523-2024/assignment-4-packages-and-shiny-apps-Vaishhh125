@@ -1,0 +1,71 @@
+---
+title: "AIriskjobs Overview"
+author: "Vaishnavi Amuda"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{AIriskjobs Overview}
+  %\VignetteKeywords{AI jobs analysis}
+  %\VignettePackage{AIriskjobs}
+---
+
+# Introduction
+This vignette provides an overview of the **AIriskjobs** package, including how to use its functions and the Shiny app.
+
+## Installation
+To install the **AIriskjobs** package from GitHub, use the following command:
+
+```{r}
+# Install devtools if you haven't already
+install.packages("devtools")
+
+# Install AIriskjobs
+devtools::install_github("https://github.com/ETC5523-2024/assignment-4-packages-and-shiny-apps-Vaishhh125/AIriskjobs")  
+
+```
+
+# Launching the Shiny App
+
+To launch the Shiny app that comes with the package, run:
+
+```{r}
+library(AIriskjobs)
+run_app()  
+```
+
+# Analyzing Job Data
+
+You can analyze job data by calculating the average salary based on the level of AI adoption in the industry. Here’s how you can summarize the data:
+
+#### Example usage
+
+```{r}
+# Load the dataset
+data("AIriskjobs")
+
+# Calculate average salary by AI adoption level
+avg_salary_by_adoption <- aggregate(Salary_USD ~ AI_Adoption_Level, data = AIriskjobs, FUN = mean)
+
+# Display the average salary by AI adoption level
+print(avg_salary_by_adoption)
+
+```
+
+
+# Conclusion
+
+This vignette highlights the key features of the AIriskjobs package. For more information on specific functions, refer to the package documentation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

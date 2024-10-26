@@ -1,3 +1,14 @@
+# Install missing packages
+required_packages <- c("shiny", "dplyr", "DT", "shinyWidgets")
+new_packages <- required_packages[!(required_packages %in% installed.packages()[, "Package"])]
+if(length(new_packages)) install.packages(new_packages)
+
+# Load required libraries
+library(shiny)
+library(dplyr)
+
+
+
 # Define the UI
 ui <- fluidPage(
   titlePanel("AI and Automation Job Insights"),
@@ -88,14 +99,14 @@ server <- function(input, output, session) {
     data <- AIriskjobs
 
     if (input$Industry != "All") {
-      data <- data %>% filter(Industry == input$Industry)
+      data <- data |> filter(Industry == input$Industry)
     }
     if (input$Company_Size != "All") {
-      data <- data %>% filter(Company_Size == input$Company_Size)
+      data <- data |> filter(Company_Size == input$Company_Size)
     }
 
     # Select relevant columns
-    data %>%
+    data |>
       select(Job_Title, AI_Adoption_Level, Automation_Risk, Salary_USD)
   })
 
