@@ -13,7 +13,7 @@ A data frame with 500 rows and 10 columns:
 \item{Industry}{The industry or sector to which the job belongs}
 \item{Company_Size}{Size of that company (small, medium, large)}
 \item{Location}{Location of the job}
-\item{AI_adoption_level}{The level of AI adoption in that sector (low, medium, high)}
+\item{AI_Adoption_Level}{The level of AI adoption in that sector (low, medium, high)}
 \item{Automation_Risk}{The likelihood that the job will be automated (low, medium, high)}
 \item{Required_Skills}{Skills necessary for the job role}
 \item{Salary_USD}{Average Salary of that job in US Dollars}
