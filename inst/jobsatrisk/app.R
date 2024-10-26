@@ -1,52 +1,113 @@
-# Load the required packages
-library(shiny)
-library(dplyr)
-
-# Load your AIriskjobs dataset
-# AIriskjobs <- read.csv("path/to/your/AIriskjobs.csv")
-
 # Define the UI
 ui <- fluidPage(
   titlePanel("AI and Automation Job Insights"),
 
+  # Add some custom styling
+  tags$head(
+    tags$style(HTML("
+      body {
+        background-color: #f0f4f7;
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+      .panel {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+      }
+      h2 {
+        color: #0056b3;
+        text-align: center;
+      }
+      h3 {
+        color: #0056b3;
+      }
+      h4 {
+        color: #666;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #e0e0e0;
+      }
+      th {
+        background-color: #0056b3;
+        color: white;
+      }
+      .btn-primary {
+        background-color: #0056b3;
+        border-color: #0056b3;
+      }
+      .btn-primary:hover {
+        background-color: #004494;
+        border-color: #004494;
+      }
+      .output-table {
+        background-color: #e7f1ff;
+        border-radius: 5px;
+        padding: 10px;
+      }
+    "))
+  ),
+
   sidebarLayout(
     sidebarPanel(
+      h3("Filter Options"),
       selectInput("Industry", "Select Industry:",
-                  choices = unique(AIriskjobs$Industry)),
+                  choices = c("All", unique(AIriskjobs$Industry))),
       selectInput("Company_Size", "Select Company Size:",
-                  choices = unique(AIriskjobs$Company_Size)),
-      selectInput("AI_Adoption_Level", "Select AI Adoption Level:",
-                  choices = c("high", "medium", "low")),  # Fixed options
-      selectInput("Automation_Risk", "Select Automation Risk:",
-                  choices = c("high", "medium", "low")),  # Fixed options
-      actionButton("filter_btn", "Filter")
+                  choices = c("All", unique(AIriskjobs$Company_Size))),
+      actionButton("clear_filters", "Clear Filters"),
+      br(),
+      h4("Description of Fields:"),
+      p("Industry: The sector to which the job belongs."),
+      p("Company Size: Size of the company (small, medium, large)."),
+      br(),
+      h4("Interpretation of Outputs:"),
+      p("The table shows job titles that match your selected filters, along with their AI Adoption Level, Automation Risk, and Average Salary.")
     ),
 
     mainPanel(
-      tableOutput("job_summary")
+      div(class = "output-table",
+          tableOutput("job_list")
+      )
     )
   )
 )
 
 # Define the server logic
-server <- function(input, output) {
+server <- function(input, output, session) {
 
-  filtered_data <- eventReactive(input$filter_btn, {
-    req(input$Industry, input$Company_Size, input$AI_Adoption_Level, input$Automation_Risk)
+  # Create a reactive expression to filter the data based on user inputs
+  filtered_data <- reactive({
+    data <- AIriskjobs
 
-    AIriskjobs %>%
-      filter(Industry == input$Industry,
-             Company_Size == input$Company_Size,
-             AI_Adoption_Level == input$AI_Adoption_Level,
-             Automation_Risk == input$Automation_Risk) %>%
-      group_by(Job_Title) %>%
-      summarize(avg_salary = mean(Salary_USD, na.rm = TRUE)) %>%
-      arrange(desc(avg_salary)) %>%
-      slice_head(n = 3)
+    if (input$Industry != "All") {
+      data <- data %>% filter(Industry == input$Industry)
+    }
+    if (input$Company_Size != "All") {
+      data <- data %>% filter(Company_Size == input$Company_Size)
+    }
+
+    # Select relevant columns
+    data %>%
+      select(Job_Title, AI_Adoption_Level, Automation_Risk, Salary_USD)
   })
 
-  output$job_summary <- renderTable({
-    filtered_data()
+  # Render the table with all data when no filter is applied
+  output$job_list <- renderTable({
+    filtered_data()  # Show filtered data based on input
+  })
+
+  # Observe the clear filters button
+  observeEvent(input$clear_filters, {
+    updateSelectInput(session, "Industry", selected = "All")
+    updateSelectInput(session, "Company_Size", selected = "All")
   })
 }
 
