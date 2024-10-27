@@ -3,4 +3,8 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   AIriskjobs_overview: AIriskjobs_overview.html
-last_built: 2024-10-27T07:36Z
+last_built: 2024-10-27T08:39Z
+
+navbar:
+  title: "AIriskjobs"
+  description: "Analyze and visualize job market trends affected by advancements in artificial intelligence and automation."

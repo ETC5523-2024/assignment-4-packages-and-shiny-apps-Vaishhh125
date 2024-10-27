@@ -1,9 +1,9 @@
 Package: AIriskjobs
 Type: Package
 Title: Jobs that are affected by AI and Automation
-Version: 4.1.1
+Version: 0.1.0
 Author: Vaishnavi Amuda
-Maintainer: The package maintainer <vamu0003@student.monash.edu>
+Maintainer: Vaishnavi Amuda <vamu0003@student.monash.edu>
 Description: The AIriskjobs package is designed to analyze and visualize job market trends affected by advancements in artificial intelligence.
 License: MIT + file LICENSE
 Encoding: UTF-8

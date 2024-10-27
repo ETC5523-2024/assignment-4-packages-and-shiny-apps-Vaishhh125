@@ -9,28 +9,33 @@ vignette: >
   %\VignettePackage{AIriskjobs}
 ---
 
+```{r setup, include=FALSE}
+# Set CRAN mirror
+options(repos = c(CRAN = "https://cran.rstudio.com/"))
+
+```
+
 # Introduction
 This vignette provides an overview of the **AIriskjobs** package, including how to use its functions and the Shiny app.
 
 ## Installation
 To install the **AIriskjobs** package from GitHub, use the following command:
 
-```{r}
+```{r, eval=FALSE}
 # Install devtools if you haven't already
-#install.packages("devtools")
+install.packages("devtools")
 
 # Install AIriskjobs
-#devtools::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-Vaishhh125")  
-
+devtools::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-Vaishhh125")
 ```
 
 # Launching the Shiny App
 
 To launch the Shiny app that comes with the package, run:
 
-```{r}
-#library(AIriskjobs)
-#run_app()  
+```{r, eval=FALSE}
+library(AIriskjobs)
+run_app()  
 ```
 
 # Analyzing Job Data
@@ -41,13 +46,14 @@ You can analyze job data by calculating the average salary based on the level of
 
 ```{r}
 # Load the dataset
-#data("AIriskjobs")
+library(AIriskjobs)
+data("AIriskjobs")
 
 # Calculate average salary by AI adoption level
-#avg_salary_by_adoption <- aggregate(Salary_USD ~ AI_Adoption_Level, data = AIriskjobs, FUN = mean)
+avg_salary_by_adoption <- aggregate(Salary_USD ~ AI_Adoption_Level, data = AIriskjobs, FUN = mean)
 
 # Display the average salary by AI adoption level
-#print(avg_salary_by_adoption)
+print(avg_salary_by_adoption)
 
 ```
 

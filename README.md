@@ -21,12 +21,12 @@ You can install the development version of AIriskjobs from
 
 ``` r
 # Install remotes if not already installed
-#if (!requireNamespace("remotes", quietly = TRUE)) {
-#  install.packages("remotes")
-#}
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
 
 # Install AIriskjobs package from GitHub
-#remotes::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-Vaishhh125")
+remotes::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-Vaishhh125")
 ```
 
 ## Shiny App
@@ -36,8 +36,8 @@ of the job market data. You can launch the app with the following
 command:
 
 ``` r
-#library(AIriskjobs)
-#run_app()  # Launches the 'jobsatrisk' Shiny app
+library(AIriskjobs)
+run_app()  # Launches the 'jobsatrisk' Shiny app
 ```
 
 ## Vignettes
@@ -46,9 +46,14 @@ For an in-depth walkthrough and additional examples, check out our
 vignette by running the following command in R:
 
 ``` r
-#vignette("AIriskjobs_overview", package = "AIriskjobs")
+vignette("AIriskjobs_overview", package = "AIriskjobs")
 ```
 
 ## License
 
 This package is licensed under the MIT License. See LICENSE for details.
+
+## Pkgdown Site
+
+For more information, visit the pkgdown site at
+<https://etc5523-2024.github.io/assignment-4-packages-and-shiny-apps-Vaishhh125/>.
