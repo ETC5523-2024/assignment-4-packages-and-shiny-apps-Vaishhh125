@@ -17,10 +17,10 @@ To install the **AIriskjobs** package from GitHub, use the following command:
 
 ```{r}
 # Install devtools if you haven't already
-install.packages("devtools")
+#install.packages("devtools")
 
 # Install AIriskjobs
-devtools::install_github("Vaishhh125/AIriskjobs")  
+#devtools::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-Vaishhh125")  
 
 ```
 
@@ -29,8 +29,8 @@ devtools::install_github("Vaishhh125/AIriskjobs")
 To launch the Shiny app that comes with the package, run:
 
 ```{r}
-library(AIriskjobs)
-run_app()  
+#library(AIriskjobs)
+#run_app()  
 ```
 
 # Analyzing Job Data
@@ -41,13 +41,13 @@ You can analyze job data by calculating the average salary based on the level of
 
 ```{r}
 # Load the dataset
-data("AIriskjobs")
+#data("AIriskjobs")
 
 # Calculate average salary by AI adoption level
-avg_salary_by_adoption <- aggregate(Salary_USD ~ AI_Adoption_Level, data = AIriskjobs, FUN = mean)
+#avg_salary_by_adoption <- aggregate(Salary_USD ~ AI_Adoption_Level, data = AIriskjobs, FUN = mean)
 
 # Display the average salary by AI adoption level
-print(avg_salary_by_adoption)
+#print(avg_salary_by_adoption)
 
 ```
 
