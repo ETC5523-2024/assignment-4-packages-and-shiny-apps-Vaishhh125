@@ -1,25 +1,6 @@
 pandoc: '3.2'
 pkgdown: 2.1.1
 pkgdown_sha: ~
-
-# Homepage configuration
-title: "AIriskjobs"
-description: "A package designed to analyze and visualize job market trends affected by advancements in artificial intelligence."
-
-# Navbar configuration (optional)
-navbar:
-  title: "AIriskjobs"
-  left:
-    - text: "Home"
-      href: index.html
-    - text: "Reference"
-      href: reference/index.html
-    - text: "Vignettes"
-      href: articles/index.html
-
-# Article configuration
 articles:
   AIriskjobs_overview: AIriskjobs_overview.html
-
-# Metadata for when the site was last built
-last_built: 2024-10-27T08:44Z
+last_built: 2024-10-27T08:51Z

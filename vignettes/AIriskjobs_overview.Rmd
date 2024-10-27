@@ -1,13 +1,18 @@
 ---
-title: "AIriskjobs Overview"
-author: "Vaishnavi Amuda"
-date: "`r Sys.Date()`"
+title: "AIriskjobs_overview"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{AIriskjobs Overview}
-  %\VignetteKeywords{AI jobs analysis}
-  %\VignettePackage{AIriskjobs}
+  %\VignetteIndexEntry{AIriskjobs_overview}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
 ```{r setup, include=FALSE}
 # Set CRAN mirror
@@ -61,17 +66,3 @@ print(avg_salary_by_adoption)
 # Conclusion
 
 This vignette highlights the key features of the AIriskjobs package. For more information on specific functions, refer to the package documentation.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
