@@ -20,7 +20,7 @@ To install the **AIriskjobs** package from GitHub, use the following command:
 install.packages("devtools")
 
 # Install AIriskjobs
-devtools::install_github("https://github.com/ETC5523-2024/assignment-4-packages-and-shiny-apps-Vaishhh125/AIriskjobs")  
+devtools::install_github("Vaishhh125/AIriskjobs")  
 
 ```
 

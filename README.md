@@ -19,6 +19,36 @@ AI data to understand labor market dynamics effectively.
 You can install the development version of AIriskjobs from
 [GitHub](https://github.com/) with:
 
-## Example
+``` r
+# Install remotes if not already installed
+#if (!requireNamespace("remotes", quietly = TRUE)) {
+#  install.packages("remotes")
+#}
 
-This is a basic example which shows you how to solve a common problem:
+# Install AIriskjobs package from GitHub
+#remotes::install_github("ETC5523-2024/assignment-4-packages-and-shiny-apps-Vaishhh125")
+```
+
+## Shiny App
+
+AIriskjobs includes a Shiny application to allow interactive exploration
+of the job market data. You can launch the app with the following
+command:
+
+``` r
+#library(AIriskjobs)
+#run_app()  # Launches the 'jobsatrisk' Shiny app
+```
+
+## Vignettes
+
+For an in-depth walkthrough and additional examples, check out our
+vignette by running the following command in R:
+
+``` r
+#vignette("AIriskjobs_overview", package = "AIriskjobs")
+```
+
+## License
+
+This package is licensed under the MIT License. See LICENSE for details.

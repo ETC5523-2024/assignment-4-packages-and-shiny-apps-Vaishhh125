@@ -1,19 +1,11 @@
-# Install missing packages
-required_packages <- c("shiny", "dplyr", "DT", "shinyWidgets")
-new_packages <- required_packages[!(required_packages %in% installed.packages()[, "Package"])]
-if(length(new_packages)) install.packages(new_packages)
-
-# Load required libraries
+# Load required libraries (include in the package dependencies instead of loading in the app)
 library(shiny)
 library(dplyr)
-
-
 
 # Define the UI
 ui <- fluidPage(
   titlePanel("AI and Automation Job Insights"),
 
-  # Add some custom styling
   tags$head(
     tags$style(HTML("
       body {
@@ -69,12 +61,10 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       h3("Filter Options"),
-      selectInput("Industry", "Select Industry:",
-                  choices = c("All", unique(AIriskjobs$Industry))),
-      selectInput("Company_Size", "Select Company Size:",
-                  choices = c("All", unique(AIriskjobs$Company_Size))),
+      selectInput("Industry", "Select Industry:", choices = c("All", unique(AIriskjobs$Industry))),
+      selectInput("Company_Size", "Select Company Size:", choices = c("All", unique(AIriskjobs$Company_Size))),
       actionButton("clear_filters", "Clear Filters"),
-      br(),
+      br(), br(),
       h4("Description of Fields:"),
       p("Industry: The sector to which the job belongs."),
       p("Company Size: Size of the company (small, medium, large)."),
@@ -86,7 +76,8 @@ ui <- fluidPage(
     mainPanel(
       div(class = "output-table",
           tableOutput("job_list")
-      )
+      ),
+      textOutput("no_data_message") # Message when no data matches filters
     )
   )
 )
@@ -106,13 +97,18 @@ server <- function(input, output, session) {
     }
 
     # Select relevant columns
-    data |>
-      select(Job_Title, AI_Adoption_Level, Automation_Risk, Salary_USD)
+    data |> select(Job_Title, AI_Adoption_Level, Automation_Risk, Salary_USD)
   })
 
   # Render the table with all data when no filter is applied
   output$job_list <- renderTable({
-    filtered_data()  # Show filtered data based on input
+    if (nrow(filtered_data()) == 0) {
+      output$no_data_message <- renderText("No data matches the selected filters.")
+      NULL
+    } else {
+      output$no_data_message <- renderText("")  # Clear message if data is present
+      filtered_data()
+    }
   })
 
   # Observe the clear filters button
