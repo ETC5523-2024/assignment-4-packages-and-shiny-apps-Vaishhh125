@@ -70,7 +70,7 @@ ui <- fluidPage(
       p("Company Size: Size of the company (small, medium, large)."),
       br(),
       h4("Interpretation of Outputs:"),
-      p("The table shows job titles that match your selected filters, along with their AI Adoption Level, Automation Risk, and Average Salary.")
+      p("The table shows job titles that match your selected filters, along with their AI Adoption Level and Automation Risk, categorized as High, Medium, or Low, as well as the Average Salary of those professions in US Dollars.")
     ),
 
     mainPanel(
